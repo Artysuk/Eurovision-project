@@ -1,3 +1,5 @@
+#Not reading files rn
+
 def file_reading_return_array(file):
     with open(file) as f:return list(word.rstrip('\n').split(':') for word in file)
 
