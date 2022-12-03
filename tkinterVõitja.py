@@ -1,3 +1,12 @@
 # Siin on leht, mis näitab võitjat
 
-from tkinter import *
+import tkinter as tk
+root = tk()
+
+class TkinterVoitja(root.Frame):
+
+    def print_something():
+        print('yo')
+
+    def starter():
+        tk.mainloop()

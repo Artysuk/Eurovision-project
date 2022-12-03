@@ -1,10 +1,12 @@
-import tkinterHindamisLeht
 from tkinter import *
 from fileRead import FileRead
+import tkinterHindamisLeht
 
 root = Tk()
-bgp = PhotoImage(file = "Eurovision.png")
-label1 = Label( root, image = bgp)
+
+img = PhotoImage(file = "Eurovision.png")
+label1 = Label(root, image = img)
+
 label1.place(x = 0,y = 0)
 
 class TkinterWork():
@@ -56,31 +58,21 @@ class TkinterWork():
         koht = Label(text = self.sorted_d.index(self.sorted_d[koht])+1).grid(row = a,column = 2,padx = 200)
         a+=1
 
-  def nupude_vaartus(self,n):
     
-    match n:
-      case 'exit':
-        return
-      case 'kolmas':
-        print('kolmas')
-      case 'teine':
-        tkinterHindamisLeht
-    
-      
 
   def nupud(self,tk):
+    pass
+    '''
+    tkl = TkinterHindamisLeht()
+
+
     
-    teineLehtNupp = Button(text="Teise lehe juurde",command = lambda n = 'teine': tk.nupude_vaartus(n)).grid(row = 5,column = 0,padx = 0)
+    teineLehtNupp = Button(text="Teise lehe juurde",command = tkl.print_something).grid(row = 5,column = 0,padx = 0)
     
     kolmasLehtNupp = Button(text="Kolmanda lehe juurde").grid(row = 6,column = 0,padx = 0)
 
     exitNupp = Button(text="Välja", command = quit).grid(row = 7,column = 0,padx = 0)
-
-
-
-  def mainloop(self):
-    root.mainloop()
-
+    '''
 
 def starter():
   fr = FileRead('eurovision.txt')
@@ -93,5 +85,5 @@ def starter():
   tk.punktid()
   tk.koht()
   tk.nupud(tk)
-  tk.mainloop()
+  root.mainloop()
 
