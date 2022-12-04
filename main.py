@@ -16,13 +16,10 @@ Lõpp:
 Kui kõik punktid on jagatud, näidatakse aknas suurelt riik, mis sai kõige rohkem punkte
 
 '''
+from tkinter import *
+from avaleht import Avaleht
 
-import tkinterAvaleht
-
-all_tasks = [
-  tkinterAvaleht.starter()
-]
-
-for i in all_tasks:i
-
-#a = TkinterWork(Tk(),FileRead('eurovision.txt').file_reading_return_array())
+root = Tk()
+a = Avaleht(root)
+a.starter()
+root.mainloop()
