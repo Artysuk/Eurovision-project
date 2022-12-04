@@ -25,3 +25,4 @@ all_tasks = [
 
 for i in all_tasks:i
 
+#a = TkinterWork(Tk(),FileRead('eurovision.txt').file_reading_return_array())
