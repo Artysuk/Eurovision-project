@@ -1,7 +1,15 @@
 from tkinter import *
-from parent import TkinterWindow
+from tkinterHindamisLeht import TkinterHindamisLeht
+import tkinterÜldineLeht
+from fileRead import FileRead
 
-class Avaleht(TkinterWindow):
+class Avaleht():
+
+    def __init__(self,root):
+        
+        self.root = root
+        self.frame1 = Frame(root)
+        
 
     def text(self):
 
@@ -12,7 +20,42 @@ class Avaleht(TkinterWindow):
         text5 = Label(self.root,text="Võimalust panna punkte ise",font=('Times New Roman',12,'bold'),bg="blue",foreground='black').pack()
         text6 = Label(self.root,text="Näha võitja/te leht ja näha võitjaid viimase 50 aasta jooksul",font=('Times New Roman',12,'bold'),bg="indigo",foreground='white').pack()
         text7 = Label(self.root,text="2022",font=('Times New Roman',8,'bold'),bg="violet",foreground='black').pack()
-    
+    def menu(self):
+
+        menuu = Menu(self.root)
+        self.root.config(menu = menuu)
+
+        subMenu = Menu(menuu)
+
+        menuu.add_cascade(label = "Programm", menu = subMenu)
+
+        subMenu.add_command(label="Välja", command = quit)
+
+
+    def call_menu(self):
+        pass
+
+    def toolbar(self):
+
+        self.toolbarr = Frame(self.root,background = "blue")
+
+        firstPage = Button(self.toolbarr, text = "Menüü",command=self.call_menu)
+        firstPage.pack(side=LEFT)
+
+        secondPage = Button(self.toolbarr,text = "Riigid, Hinded ja Koht")
+        secondPage.pack(side=LEFT)
+
+        thirdPage = Button(self.toolbarr,text = "Hindamisleht")
+        thirdPage.pack(side=LEFT)
+
+        fourthPage = Button(self.toolbarr,text = "Võitja Leht")
+        fourthPage.pack(side=LEFT)
+
+        fourthPage = Button(self.toolbarr,text = "Internet Parse(?)")
+        fourthPage.pack(side=LEFT)
+
+        self.toolbarr.pack(side=TOP)
+
 
     def starter(self):
 
@@ -25,12 +68,7 @@ class Avaleht(TkinterWindow):
         self.toolbar()
         self.text()
 
-        self.root.mainloop()
 
-
-root = Tk()
-a = Avaleht(root)
-a.starter()
 
 
 

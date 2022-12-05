@@ -1,6 +1,6 @@
 {
     "background.fullscreen": {
-      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Decorative_toilet_seat.jpg/200px-Decorative_toilet_seat.jpg", // url of your image
+      "image": "", // url of your image
       "opacity": 0.5, // 0.85 ~ 0.95 recommended
       "size": "cover" // also css, `cover` to self-adaption (recommended)，or `contain`、`200px 200px`
     }
