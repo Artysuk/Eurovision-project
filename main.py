@@ -29,6 +29,19 @@ LARGEFONT = ('Verdana',35)
 global array
 array = FileRead('eurovision.txt').file_reading_return_array()
 
+key = []
+value = []
+d = dict()
+sorted_arr = sorted(array)
+
+    
+for keys in sorted_arr:
+      
+    d[keys[0]] = randint(0,600)
+      
+    key.append(keys[0])
+    value.append(d[keys[0]])
+
 
 class SampleApp(tk.Tk):
     def __init__(self):
@@ -52,7 +65,7 @@ class StarterPage(tk.Frame):
         tk.Frame.__init__(self, master)
         self.master.title("Avaleht")
 
-        self.master.configure(bg = '#856ff8')
+        self.master.configure(bg = 'Purple')
 
         self.toolbar()
         self.text()
@@ -90,12 +103,12 @@ class StarterPage(tk.Frame):
 
         self.toolbarr = tk.Frame(self,background = "blue")
 
-        firstPage = tk.Button(self.toolbarr,text = "Riigid, Hinded ja Koht",command=lambda: self.master.switch_frame(PageOne)).pack(side=tk.LEFT)
+        firstPage = tk.Button(self.toolbarr,text = "Riigid, Hinded ja Koht",command=lambda: self.master.switch_frame(PageGivingMarks)).pack(side=tk.LEFT)
 
-        thirdPage = tk.Button(self.toolbarr,text = "Hindamisleht",command=lambda: self.master.switch_frame(PageTwo)).pack(side=tk.LEFT)
+        thirdPage = tk.Button(self.toolbarr,text = "Hindamisleht",command=lambda: self.master.switch_frame(PageGivingMarks)).pack(side=tk.LEFT)
 
-        fourthPage = tk.Button(self.toolbarr,text = "Võitja Leht")
-        fourthPage.pack(side=tk.LEFT)
+        fourthPage = tk.Button(self.toolbarr,text = "Võitja Leht",command=lambda: self.master.switch_frame(PageWinner)).pack(side=tk.LEFT)
+        
 
         fourthPage = tk.Button(self.toolbarr,text = "Internet Parse(?)")
         fourthPage.pack(side=tk.LEFT)
@@ -105,106 +118,102 @@ class StarterPage(tk.Frame):
 
     
 
-class PageTwo(tk.Frame):
+class PageWinner(tk.Frame):
 
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         self.master.title("PageTwo")
-        tk.Label(self, text="This is page two").pack(side="top", fill="x", pady=10)
+
+        tk.Label(self, text="This is page two").grid()
         tk.Button(self, text="Return to start page",
-                  command=lambda: master.switch_frame(StarterPage)).pack()
+                  command=lambda: master.switch_frame(StarterPage)).grid()
 
 
-class PageOne(tk.Tk):
+class PageGivingMarks(tk.Frame):
 
   def __init__(self,master):
 
     tk.Frame.__init__(self, master)
 
-    self.d = {}
-    self.sorted_arr = sorted(array)
-    self.key = []
-    self.value = []
 
-    
-    for key in sorted(array):
-      
-      self.d[key] = randint(0,600)
-      
-      self.key.append(key)
-      self.value.append(self.d[key])
+    self.arr = sorted(d.items(), key=lambda x: x[1],reverse=tk.TRUE)
 
-    self.arr = sorted(self.d.items(), key=lambda x: x[1],reverse=tk.TRUE)
+    self.toolbar()
+    self.countries_write()
+    self.points()
+    self.place()
 
 
 
   def countries_write(self):
 
-    riigid = self.master.Label(text="Riigid", bg="Purple", fg="white").grid(row=0,  column=0,  padx=10,  pady=1)
+    riigid = tk.Label(self,text="Riigid").grid(row=0,  column=0,  padx=10,  pady=1)
 
     a = 0
 
     for key in range(0,len(self.arr)-17):
-      k = self.master.Label(text=self.arr[key][0]).grid(row=a+1,  column=0,  padx=10,  pady=1)
+
+      k = tk.Label(self,text=self.arr[key][0]).grid(row=a+1,  column=0,  padx=10,  pady=1)
       a += 1
 
     a = 0
-    riigid = self.master.Label(text="Riigid", bg="Purple", fg="white").grid(row=0,  column=7,  padx=10,  pady=1)
+    riigid = tk.Label(self,text="Riigid", bg="Purple", fg="white").grid(row=0,  column=7,  padx=10,  pady=1)
 
     for key in range(24,len(self.arr)):
-      k = self.master.Label(text=self.arr[key][0]).grid(row=a+1,  column=7,  padx=10,  pady=1)
+      k = tk.Label(self,text=self.arr[key][0]).grid(row=a+1,  column=7,  padx=10,  pady=1)
       a += 1
+
+
+  def toolbar(self):
+
+        self.toolbarr = tk.Frame(self,background = "blue")
+
+        firstPage = tk.Button(self.toolbarr,text = "Aveleht",command=lambda: self.master.switch_frame(StarterPage)).grid()
+
+        self.toolbarr.grid()
+
+
 
   def points(self):
     a = 0
 
-    punktid = self.master.Label(text="Punktid", bg="Blue", fg="white").grid(row=0,  column=1,  padx=10,  pady=5)
+    punktid = tk.Label(self,text="Punktid", bg="Blue", fg="white").grid(row=0,  column=1,  padx=10,  pady=5)
 
     for value in range(0,len(self.arr)-17):
 
-      v = self.master.Label(text=self.arr[value][1]).grid(row=a+1,  column=1,  padx=10,  pady=5)
+      v = tk.Label(self,text=self.arr[value][1]).grid(row=a+1,  column=1,  padx=10,  pady=5)
       a += 1
 
-    punktid = self.master.Label(text="Punktid", bg="Blue", fg="white").grid(row=0,  column=8,  padx=10,  pady=5)
+    punktid = tk.Label(self,text="Punktid", bg="Blue", fg="white").grid(row=0,  column=8,  padx=10,  pady=5)
     a=0
     for value in range(24,len(self.arr)):
 
-      v = self.master.Label(text=self.arr[value][1]).grid(row=a+1,  column=8,  padx=10,  pady=5)
+      v = tk.Label(self,text=self.arr[value][1]).grid(row=a+1,  column=8,  padx=10,  pady=5)
       a += 1
+
+
+
 
 
   def place(self):
 
-    koht = self.master.Label(text = "Koht",bg ="Black",fg = "white").grid(row = 0,column = 2,  padx=10,  pady=5)
+    koht = tk.Label(self,text = "Koht",bg ="Black",fg = "white").grid(row = 0,column = 2,  padx=10,  pady=5)
     
     a = 1
 
 
     for koht in range(len(self.arr)-17):
-      koht = self.master.Label(text = koht+1).grid(row = a,column = 2,  padx=10,  pady=5)
+      koht = tk.Label(self,text = koht+1).grid(row = a,column = 2,  padx=10,  pady=5)
       a+=1
     
-    koht = self.master.Label(text = "Koht",bg ="Black",fg = "white").grid(row = 0,column = 9,  padx=10,  pady=5)
+    koht = tk.Label(self,text = "Koht",bg ="Black",fg = "white").grid(row = 0,column = 9,  padx=10,  pady=5)
     a = 1
 
-    for koht in range(24,len(self.sorted_arr)):
-      koht = self.master.Label(text = koht+1).grid(row = a,column = 9,  padx=10,  pady=5)
+    for koht in range(24,len(sorted_arr)):
+      koht = tk.Label(self,text = koht+1).grid(row = a,column = 9,  padx=10,  pady=5)
       a+=1
 
 
-  def buttons(self):
-    
-    main_window = tk.Button(text = "Avaleht").grid(row=5,column = 15,padx=300)
-    third_window = tk.Button(text = "Kolmanda lehe peale").grid(row = 7, column=15,padx=300)
-    fourth_window = tk.Button(text = "Neljanda lehe peale").grid(row = 9,column=15,padx=300)
-
-
-  def starter(self):
-    self.root.geometry('3000x3000')
-    self.countries_write()
-    self.points()
-    self.place()
-    self.buttons()
 
 
 

@@ -22,3 +22,6 @@ def võitjate_parsimine():
                 v[i][e] = r"%r" % v[i][e]
                 v[i][e] = v[i][e].replace("\\x8a", "Š").replace("\\x9e", "ž")
     return v
+
+
+print(võitjate_parsimine())
