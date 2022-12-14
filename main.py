@@ -80,13 +80,13 @@ class StarterPage(tk.Frame):
 
     def text(self):
 
-        text1 = tk.Label(self,text="Eurovisiooni projekt(versioon 0.02)",font=('Times New Roman',17,'bold'),bg="red",foreground='black').pack()
-        text2 = tk.Label(self,text="Sisaldab:",font=('Times New Roman',15,'bold'),bg="Orange",foreground='white').pack()
-        text3 = tk.Label(self,text="Peamenüü(Avaleht)",font=('Times New Roman',12,'bold'),bg="yellow",foreground='black').pack()
-        text4 = tk.Label(self,text="Riikide koht ja hind",font=('Times New Roman',12,'bold'),bg="green",foreground='white').pack()
-        text5 = tk.Label(self,text="Võimalust panna punkte ise",font=('Times New Roman',12,'bold'),bg="blue",foreground='black').pack()
-        text6 = tk.Label(self,text="Näha võitjate leht ja näha võitjaid viimase 50 aasta jooksul",font=('Times New Roman',12,'bold'),bg="indigo",foreground='white').pack()
-        text7 = tk.Label(self,text="2022",font=('Times New Roman',8,'bold'),bg="violet",foreground='black').pack()
+        text1 = tk.Label(self,text="Eurovisiooni projekt (versioon 0.02)",font=('MS Sans Serif',20,'bold'),foreground='black').pack()
+        text2 = tk.Label(self,text="Sisaldab:",font=('MS Sans Serif',15,'bold'),foreground='black',justify="left").pack()
+        text3 = tk.Label(self,text="Peamenüü(Avaleht)",font=('MS Sans Serif',12,'bold'),foreground='black',justify="right").pack()
+        text4 = tk.Label(self,text="Riikide koht ja punktid",font=('MS Sans Serif',12,'bold'),foreground='black').pack()
+        text5 = tk.Label(self,text="Võimalus panna punkte ise",font=('MS Sans Serif',12,'bold'),foreground='black').pack()
+        text6 = tk.Label(self,text="Näha võitjate lehte ja Eurovisiooni võitjaid viimase 50 aasta jooksul",font=('MS Sans Serif',12,'bold'),foreground='black').pack()
+        text7 = tk.Label(self,text="2022",font=('MS Sans Serif',5,'bold'),foreground='black').pack()
 
     def menu(self):
 
@@ -107,14 +107,13 @@ class StarterPage(tk.Frame):
 
         self.toolbarr = tk.Frame(self,background = "blue")
 
-        firstPage = tk.Button(self.toolbarr,text = "Riigid, Hinded ja Koht",command=lambda: self.master.switch_frame(PagePrintingMarks)).pack(side=tk.LEFT)
+        firstPage = tk.Button(self.toolbarr,text = "Riigid, punktid ja kohad", font=('MS Sans Serif', 10),command=lambda: self.master.switch_frame(PagePrintingMarks), bg="#CBC3E3").pack(side=tk.LEFT)
 
-        secondPage = tk.Button(self.toolbarr,text = "Hindamisleht",command=lambda: self.master.switch_frame(PageGivingMarks)).pack(side=tk.LEFT)
+        secondPage = tk.Button(self.toolbarr,text = "Hindamisleht",font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageGivingMarks), bg="#CBC3E3").pack(side=tk.LEFT)
 
-        thirdPage = tk.Button(self.toolbarr,text = "Võitja Leht",command=lambda: self.master.switch_frame(PageWinner)).pack(side=tk.LEFT)
+        thirdPage = tk.Button(self.toolbarr,text = "Võitja leht",font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageWinner), bg="#CBC3E3").pack(side=tk.LEFT)
         
-
-        fourthPage = tk.Button(self.toolbarr,text = "Internet Parse",command=lambda: self.master.switch_frame(PageInternetParse)).pack(side=tk.LEFT)
+        fourthPage = tk.Button(self.toolbarr,text = "Eurovisiooni võitjad",font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageInternetParse), bg="#CBC3E3").pack(side=tk.LEFT)
 
         self.toolbarr.pack(side=tk.TOP)
 
@@ -126,25 +125,24 @@ class PageWinner(tk.Frame):
     def __init__(self, master):
 
         tk.Frame.__init__(self, master)
-        self.master.title("PageWinner")
+        self.master.title("Võitja")
 
         value = list({i for i in d if d[i]==max(d.values())})[0]
         self.toolbar()
 
-        winner_text = tk.Label(self,text = f"Meie võitja on ---- {value} punktidega {max(d.values())}").pack()
+        winner_text = tk.Label(self,text = f"Meie võitja on... {value} {max(d.values())} punktiga!",font=('MS Sans Serif',15,'bold'),foreground='black').pack()
 
     def toolbar(self):
 
       self.toolbarr = tk.Frame(self,background = "blue")
 
-      firstPage = tk.Button(self.toolbarr,text = "Riigid, Hinded ja Koht",command=lambda: self.master.switch_frame(PagePrintingMarks)).pack(side=tk.LEFT)
+      mainpage = tk.Button(self.toolbarr,text = "Avaleht",font=('MS Sans Serif', 10),command=lambda: self.master.switch_frame(StarterPage), bg="#FFFFE0").pack(side=tk.LEFT)
 
-      secondPage = tk.Button(self.toolbarr,text = "Hindamisleht",command=lambda: self.master.switch_frame(PageGivingMarks)).pack(side=tk.LEFT)
+      secondPage = tk.Button(self.toolbarr,text = "Riigid, punktid ja kohad", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PagePrintingMarks), bg="#FFFFE0").pack(side=tk.LEFT)
 
-      thirdPage = tk.Button(self.toolbarr,text = "Võitja Leht",command=lambda: self.master.switch_frame(PageWinner)).pack(side=tk.LEFT)
-        
+      thirdPage = tk.Button(self.toolbarr,text = "Hindamisleht", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageGivingMarks), bg="#FFFFE0").pack(side=tk.LEFT)
 
-      fourthPage = tk.Button(self.toolbarr,text = "Internet Parse",command=lambda: self.master.switch_frame(PageInternetParse)).pack(side=tk.LEFT)
+      fourthPage = tk.Button(self.toolbarr,text = "Eurovisiooni võitjad", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageInternetParse), bg="#FFFFE0").pack(side=tk.LEFT)
 
       self.toolbarr.pack(side=tk.TOP)
 
@@ -153,7 +151,7 @@ class PageInternetParse(tk.Frame):
 
     def __init__(self, master):
         tk.Frame.__init__(self, master)
-        self.master.title("PageInternetParse")
+        self.master.title("Eurovisiooni võitjad")
         self.võitjate_parsimine()
         self.toolbar()
 
@@ -215,13 +213,13 @@ class PageInternetParse(tk.Frame):
 
         self.toolbarr = tk.Frame(self,background = "blue")
 
-        mainPage = tk.Button(self.toolbarr,text = "Aveleht",command=lambda: self.master.switch_frame(StarterPage)).grid(row = 0, column = 1)
+        mainPage = tk.Button(self.toolbarr,text = "Avaleht", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(StarterPage), bg="#ADD8E6").grid(row = 0, column = 1)
 
-        fifthPage = tk.Button(self.toolbarr,text = "Riigid, Hinded ja Koht",command=lambda: self.master.switch_frame(PagePrintingMarks)).grid(row = 0, column = 4)
+        fifthPage = tk.Button(self.toolbarr,text = "Riigid, punktid ja kohad", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PagePrintingMarks), bg="#ADD8E6").grid(row = 0, column = 4)
 
-        thirdPage = tk.Button(self.toolbarr,text = "Hindamisleht",command=lambda: self.master.switch_frame(PageGivingMarks)).grid(row = 0, column = 2)
+        thirdPage = tk.Button(self.toolbarr,text = "Hindamisleht", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageGivingMarks), bg="#ADD8E6").grid(row = 0, column = 2)
 
-        fourthPage = tk.Button(self.toolbarr,text = "Võitja Leht",command=lambda: self.master.switch_frame(PageWinner)).grid(row = 0, column = 3)
+        fourthPage = tk.Button(self.toolbarr,text = "Võitja leht", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageWinner), bg="#ADD8E6").grid(row = 0, column = 3)
 
         
 
@@ -234,7 +232,7 @@ class PageGivingMarks(tk.Frame):
     def __init__(self, master):
 
         tk.Frame.__init__(self, master)
-        self.master.title("PageGivingMarks")
+        self.master.title("Punktide andmine")
 
         self.toolbar()
         self.buttons()
@@ -288,14 +286,14 @@ class PageGivingMarks(tk.Frame):
 
 
     def buttons(self):
-      text = tk.Label(self,text = "Kirjuta riik siia (Eesti keeles)\n Jälgi, et sa kirjutaksid õigesti\nning ära kirjuta sama riigi 2 korda").pack(side=tk.TOP)
+      text = tk.Label(self,text = "Kirjuta riik siia (eesti keeles)\n• Jälgi, et sa kirjutaksid õigesti\n• Ära kirjuta sama riigi 2 korda", font=('MS Sans Serif',12,'bold')).pack(side=tk.TOP)
 
       self.country = tk.Entry(self)
       self.country.pack()
 
       btn12=tk.Button(self, text="12", font= ('Helvetica bold', 10), command=lambda:
       self.point_putter(12,btn12))
-      btn12.pack(pady=10) 
+      btn12.pack(pady=10)
 
       btn10=tk.Button(self, text="10", font= ('Helvetica bold', 10), command=lambda:
       self.point_putter(10,btn10))
@@ -345,14 +343,13 @@ class PageGivingMarks(tk.Frame):
 
       self.toolbarr = tk.Frame(self,background = "blue")
 
-      firstPage = tk.Button(self.toolbarr,text = "Riigid, Hinded ja Koht",command=lambda: self.master.switch_frame(PagePrintingMarks)).pack(side=tk.LEFT)
+      firstPage = tk.Button(self.toolbarr,text = "Avaleht", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(StarterPage), bg="#FFCCCB").pack(side=tk.LEFT)
 
-      secondPage = tk.Button(self.toolbarr,text = "Hindamisleht",command=lambda: self.master.switch_frame(PageGivingMarks)).pack(side=tk.LEFT)
+      secondPage = tk.Button(self.toolbarr,text = "Riigid, punktid ja kohad", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PagePrintingMarks), bg="#FFCCCB").pack(side=tk.LEFT)
 
-      thirdPage = tk.Button(self.toolbarr,text = "Võitja Leht",command=lambda: self.master.switch_frame(PageWinner)).pack(side=tk.LEFT)
+      thirdPage = tk.Button(self.toolbarr,text = "Võitja leht", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageWinner), bg="#FFCCCB").pack(side=tk.LEFT)
         
-
-      fourthPage = tk.Button(self.toolbarr,text = "Internet Parse",command=lambda: self.master.switch_frame(PageInternetParse)).pack(side=tk.LEFT)
+      fourthPage = tk.Button(self.toolbarr,text = "Eurovisiooni võitjad", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageInternetParse), bg="#FFCCCB").pack(side=tk.LEFT)
 
       self.toolbarr.pack(side=tk.TOP)
 
@@ -365,7 +362,7 @@ class PagePrintingMarks(tk.Frame):
   def __init__(self,master):
 
     tk.Frame.__init__(self, master)
-    self.master.title("PagePrintingMarks")
+    self.master.title("Tulemused")
 
     
     self.arr = sorted(d.items(), key=lambda x: x[1],reverse=tk.TRUE)
@@ -381,20 +378,27 @@ class PagePrintingMarks(tk.Frame):
 
   def countries_write(self):
 
-    riigid = tk.Label(self,text="Riigid", bg="Purple", fg="white").grid(row=1,  column=1,  padx=10,  pady=1)
+    riigid = tk.Label(self,text="Riigid", font=('MS Sans Serif',10,'bold','underline'), bg="#800000", fg="white").grid(row=1,  column=1,  padx=5,  pady=1)
 
     a = 1
 
     for key in range(0,len(self.arr)-17):
 
-      k = tk.Label(self,text=self.arr[key][0]).grid(row=a+1,  column=1,  padx=10,  pady=1)
+      if a == 1:
+        k = tk.Label(self,text=self.arr[key][0], background="gold").grid(row=a+1,  column=1,  padx=5,  pady=1)
+      elif a == 2:
+        k = tk.Label(self,text=self.arr[key][0], background="silver").grid(row=a+1,  column=1,  padx=5,  pady=1)
+      elif a == 3:
+        k = tk.Label(self,text=self.arr[key][0], background="#CD7F32").grid(row=a+1,  column=1,  padx=5,  pady=1)
+      else:
+        k = tk.Label(self,text=self.arr[key][0]).grid(row=a+1,  column=1,  padx=5,  pady=1)
       a += 1
 
     a = 1
-    riigid = tk.Label(self,text="Riigid", bg="Purple", fg="white").grid(row=1,  column=8,  padx=10,  pady=1)
+    riigid = tk.Label(self,text="Riigid",font=('MS Sans Serif',10,'bold','underline'), bg="#800000", fg="white").grid(row=1,  column=8,  padx=5,  pady=1)
 
     for key in range(24,len(self.arr)):
-      k = tk.Label(self,text=self.arr[key][0]).grid(row=a+1,  column=8,  padx=10,  pady=1)
+      k = tk.Label(self,text=self.arr[key][0]).grid(row=a+1,  column=8,  padx=5,  pady=1)
       a += 1
 
 
@@ -402,13 +406,13 @@ class PagePrintingMarks(tk.Frame):
 
         self.toolbarr = tk.Frame(self,background = "blue")
 
-        mainPage = tk.Button(self.toolbarr,text = "Aveleht",command=lambda: self.master.switch_frame(StarterPage)).grid(row = 0, column = 1)
+        mainPage = tk.Button(self.toolbarr,text = "Avaleht", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(StarterPage), bg="#90EE90").grid(row = 0, column = 1)
 
-        thirdPage = tk.Button(self.toolbarr,text = "Hindamisleht",command=lambda: self.master.switch_frame(PageGivingMarks)).grid(row = 0, column = 2)
+        thirdPage = tk.Button(self.toolbarr,text = "Hindamisleht", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageGivingMarks), bg="#90EE90").grid(row = 0, column = 2)
 
-        fourthPage = tk.Button(self.toolbarr,text = "Võitja Leht",command=lambda: self.master.switch_frame(PageWinner)).grid(row = 0, column = 3)
+        fourthPage = tk.Button(self.toolbarr,text = "Võitja Leht", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageWinner), bg="#90EE90").grid(row = 0, column = 3)
 
-        fifthPage = tk.Button(self.toolbarr,text = "Internet Parse",command=lambda: self.master.switch_frame(PageInternetParse)).grid(row = 0, column = 4)
+        fifthPage = tk.Button(self.toolbarr,text = "Eurovisiooni võitjad", font=('MS Sans Serif', 10), command=lambda: self.master.switch_frame(PageInternetParse), bg="#90EE90").grid(row = 0, column = 4)
 
 
         self.toolbarr.grid(row = 0, column = 4)
@@ -418,14 +422,21 @@ class PagePrintingMarks(tk.Frame):
   def points(self):
     a = 1
 
-    punktid = tk.Label(self,text="Punktid", bg="Blue", fg="white").grid(row=1,  column=2,  padx=10,  pady=5)
+    punktid = tk.Label(self,text="Punktid",font=('MS Sans Serif',10,'bold','underline'), bg="#800000", fg="white").grid(row=1,  column=2,  padx=10,  pady=5)
 
     for value in range(0,len(self.arr)-17):
 
-      v = tk.Label(self,text=self.arr[value][1]).grid(row=a+1,  column=2,  padx=10,  pady=5)
+      if a == 1:
+        v = tk.Label(self,text=self.arr[value][1], background="gold").grid(row=a+1,  column=2,  padx=10,  pady=5)
+      elif a == 2:
+        v = tk.Label(self,text=self.arr[value][1], background="silver").grid(row=a+1,  column=2,  padx=10,  pady=5)
+      elif a == 3:
+        v = tk.Label(self,text=self.arr[value][1], background="#CD7F32").grid(row=a+1,  column=2,  padx=10,  pady=5)
+      else:
+        v = tk.Label(self,text=self.arr[value][1]).grid(row=a+1,  column=2,  padx=10,  pady=5)
       a += 1
 
-    punktid = tk.Label(self,text="Punktid", bg="Blue", fg="white").grid(row=1,  column=9,  padx=10,  pady=5)
+    punktid = tk.Label(self,text="Punktid",font=('MS Sans Serif',10,'bold','underline'), bg="#800000", fg="white").grid(row=1,  column=9,  padx=10,  pady=5)
 
     a=1
     for value in range(24,len(self.arr)):
@@ -439,16 +450,23 @@ class PagePrintingMarks(tk.Frame):
 
   def place(self):
 
-    koht = tk.Label(self,text = "Koht",bg ="Black",fg = "white").grid(row = 1,column = 3,  padx=10,  pady=5)
+    koht = tk.Label(self,text = "Koht",font=('MS Sans Serif',10,'bold','underline'),bg ="#800000",fg = "white").grid(row = 1,column = 3,  padx=10,  pady=5)
     
     a = 2
 
-
     for koht in range(len(self.arr)-17):
-      koht = tk.Label(self,text = koht+1).grid(row = a,column = 3,  padx=10,  pady=5)
+
+      if a == 2:
+        koht = tk.Label(self,text = koht+1, background="gold").grid(row = a,column = 3,  padx=10,  pady=5)
+      elif a == 3:
+        koht = tk.Label(self,text = koht+1, background="silver").grid(row = a,column = 3,  padx=10,  pady=5)
+      elif a == 4:
+        koht = tk.Label(self,text = koht+1, background="#CD7F32").grid(row = a,column = 3,  padx=10,  pady=5)
+      else:
+        koht = tk.Label(self,text = koht+1).grid(row = a,column = 3,  padx=10,  pady=5)
       a+=1
     
-    koht = tk.Label(self,text = "Koht",bg ="Black",fg = "white").grid(row = 1,column = 10,  padx=10,  pady=5)
+    koht = tk.Label(self,text = "Koht",font=('MS Sans Serif',10,'bold','underline'),bg ="#800000",fg = "white").grid(row = 1,column = 10,  padx=10,  pady=5)
     a = 2
 
     for koht in range(24,len(sorted_arr)):
