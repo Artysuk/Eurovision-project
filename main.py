@@ -27,21 +27,26 @@ from bs4 import BeautifulSoup
 
 
 
-global array
-array = FileRead('eurovision.txt').file_reading_return_array()
+def file_work():
 
-key = []
-value = []
-d = dict()
-sorted_arr = sorted(array)
+  global d
+  d = dict()
+  global array
+  array = FileRead('eurovision.txt').file_reading_return_array()
+
+  key = []
+  value = []
+
+  global sorted_arr
+  sorted_arr = sorted(array)
 
     
-for keys in sorted_arr:
-      
-    d[keys[0]] = randint(0,600)
-      
-    key.append(keys[0])
-    value.append(d[keys[0]])
+  for keys in sorted_arr:
+        
+      d[keys[0]] = randint(0,600)
+        
+      key.append(keys[0])
+      value.append(d[keys[0]])
 
 
 
@@ -242,13 +247,13 @@ class PageGivingMarks(tk.Frame):
       if self.country.get() in array_of_used_countries:
 
         a = messagebox.showerror("Critical Error :o ","Viga, ei tohi lisada sama riigile punkte kaks korda. Proovi uuesti")
+        file_work()
         array_of_used_countries.clear()
-        self.master.switch_frame(PageGivingMarks)
+        self.master.switch_frame(StarterPage)
 
       if self.country.get() not in d:
 
         a = messagebox.showerror("Critical Error :o ","Viga, seda riiki ei eksisteeri. Proovi uuesti")
-        array_of_used_countries.clear()
         self.master.switch_frame(PageGivingMarks)
 
         
@@ -482,5 +487,6 @@ class PagePrintingMarks(tk.Frame):
 
 
 if __name__ == "__main__":
+    file_work()
     app = SampleApp()
     app.mainloop()
