@@ -1,41 +1,41 @@
-Albania (RTSH)
-Armenia (AMPTV)
-Australia (SBS)*
-Austria (ORF)
-Azerbaijan (Ictimai TV)
-Belarus (BTRC)
-Belgium (VRT)
-Bulgaria (BNT)
-Croatia (HRT)
-Cyprus (CyBC)
-Czech Republic (CT)
-Denmark (DR)
-Estonia (ERR)
-Finland (YLE)
-France (FT)
-Germany (ARD/NDR)
-Georgia (GPB)
-Greece (ERT)
-Iceland (RUV)
-Ireland (RTE)
-Israel (KAN)
-Italy (RAI)
-Latvia (LTV)
-Lithuania (LRT)
-Malta (PBS)
-Moldova (TRM)
-The Netherlands (AVROTROS)
-North Macedonia (MKRTV)
-Norway (NRK)
-Poland (TVP)
-Portugal (RTP)
-Romania (TVR)
-Russia (Channel One)
-San Marino (RTV)
-Serbia (RTS)
-Slovenia (RTVSLO)
-Spain (TVE)
-Sweden (SVT)
-Switzerland (SRG SSR)
-Ukraine (UA:PBC)
-United Kingdom (BBC)
+Albaania
+Armeenia
+Austraalia
+Austria
+Aserbaidžaan
+Valgevene
+Belgia
+Bulgaaria
+Horvaatia
+Küpros
+Tšehhi Vabariik
+Taani
+Eesti
+Soome
+Prantsusmaa
+Saksamaa
+Gruusia
+Kreeka
+Island
+Iirimaa
+Iisrael
+Itaalia
+Läti
+Leedu
+Malta
+Moldova
+Madalmaad
+Põhja-Makedoonia
+Norra
+Poola
+Portugal
+Rumeenia
+Venemaa
+San Marino
+Serbia
+Sloveenia
+Hispaania
+Rootsi
+Šveits
+Ukraina
+Ühendkuningriik
